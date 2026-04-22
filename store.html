@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inflatable Party Rentals - Store</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .heading { font-family: 'Playfair Display', serif; }
+
+    /* hide scrollbar */
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+  </style>
+</head>
+
+<body class="bg-[#f8fafc]">
+
+<!-- ================= HEADER ================= -->
+<header class="flex items-center justify-between px-5 py-4 bg-white shadow-sm">
+<div class="bg-white shadow-sm sticky top-0 z-50">
+  <div class="max-w-6xl mx-auto flex items-center justify-between px-5 py-4">
+    <div class="flex items-center gap-3 cursor-pointer" onclick="window.location.href='index.html'">
+      <img src="logo.JPEG" alt="Jump and Splash Inflatable Rentals Logo" class="w-10 h-10 object-contain rounded-lg">
+      <h1 class="text-lg font-bold tracking-tight text-gray-900"></h1>
+    </div>
+
+    <nav class="hidden md:flex gap-8 font-medium items-center text-gray-700">
+      <a href="index.html" class="hover:text-blue-600 transition">Home</a>
+      <a href="store.html" class="hover:text-blue-600 transition">Store</a>
+      <a href="index.html#about" class="hover:text-blue-600 transition">About</a>
+      <a href="index.html#faq" class="hover:text-blue-600 transition">FAQ</a>
+      
+      <a href="mailto:rentwithinflatableparties@gmail.com" class="hover:text-blue-600 transition">Contact</a>
+
+      <a href="cart.html" class="flex items-center gap-2 bg-blue-50 px-4 py-2 rounded-full text-blue-600 hover:bg-blue-100 transition">
+        <span>🛒</span>
+        <span id="cartCount" class="font-bold">0</span>
+      </a>
+    </nav>
+
+    <button id="openMenu" class="md:hidden text-2xl">☰</button>
+  </div>
+</div>
+
+<div id="menuOverlay" class="fixed inset-0 bg-black/40 backdrop-blur-sm hidden z-40"></div>
+<div id="menuPanel" class="fixed top-0 right-0 h-full w-full bg-white transform translate-x-full transition-transform duration-300 z-50">
+  <div class="flex items-center justify-between px-5 py-4 border-b">
+    <h2 class="text-lg font-semibold">Menu</h2>
+    <button id="closeMenu" class="text-2xl">✕</button>
+  </div>
+  <div class="flex flex-col px-6 py-8 gap-6 text-lg font-medium">
+    <a href="index.html">Home</a>
+    <a href="store.html">Store</a>
+    <a href="index.html#about">About</a>
+    <a href="index.html#faq">FAQ</a>
+    <a href="mailto:rentwithinflatableparties@gmail.com">Contact</a>
+    <hr>
+    <a href="cart.html" class="text-blue-600 font-bold flex justify-between">
+      View Cart <span>(<span id="cartCountMobile">0</span>)</span>
+    </a>
+  </div>
+</div>
+
+</header>
+
+<!-- ================= HERO (VIDEO) ================= -->
+<section class="relative overflow-hidden">
+
+  <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover">
+    <source src="hero.mp4" type="video/mp4">
+  </video>
+
+  <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70"></div>
+
+  <div class="relative z-10 px-5 py-24">
+    <div class="max-w-6xl mx-auto">
+
+      <h1 class="heading text-4xl md:text-5xl text-white mb-4">
+        Browse Our <br/>
+        <span class="bg-gradient-to-r from-[#34d399] via-[#84cc16] to-[#facc15] bg-clip-text text-transparent">
+          Party Rentals
+        </span>
+      </h1>
+
+      <p class="text-white/80 max-w-lg">
+        Find the perfect setup for your event. Filter by category, price, and book instantly.
+      </p>
+
+    </div>
+  </div>
+
+</section>
+
+<!-- ================= STORE ================= -->
+<section class="px-5 py-12">
+
+  <div class="max-w-6xl mx-auto grid md:grid-cols-[250px_1fr] gap-8">
+
+    <!-- FILTERS -->
+    <div class="bg-white p-5 rounded-2xl shadow-sm h-fit">
+
+      <h3 class="font-semibold mb-4">Filters</h3>
+
+      <label class="text-sm">Category</label>
+      <select id="categoryFilter" class="w-full mt-2 p-2 border rounded-lg">
+        <option value="">All</option>
+      </select>
+
+      <div class="mt-6">
+        <label class="text-sm">Max Price ($)</label>
+        <input type="range" id="priceFilter" min="0" max="600" value="600" class="w-full mt-2">
+        <p class="text-sm text-[#0ea5a4]">$<span id="priceValue">600</span></p>
+      </div>
+
+    </div>
+
+    <!-- PRODUCTS -->
+    <div id="productGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+
+  </div>
+
+</section>
+
+<!-- ================= IMAGE MODAL ================= -->
+<div id="imageModal" class="fixed inset-0 bg-black/70 hidden items-center justify-center z-50">
+  <img id="modalImg" class="max-w-[90%] max-h-[80%] rounded-xl"/>
+</div>
+
+<!-- ================= CART POPUP ================= -->
+<div id="cartPopup" class="fixed bottom-5 right-5 bg-[#0ea5a4] text-white px-5 py-3 rounded-full shadow-lg hidden">
+  Added to cart ✅
+</div>
+
+<!-- ================= SCRIPT ================= -->
+<script>
+let data = {};
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+fetch('categories.json')
+  .then(res => res.json())
+  .then(json => {
+    data = json;
+    initFilters();
+    renderProducts(data.products);
+  });
+
+function initFilters() {
+  const select = document.getElementById("categoryFilter");
+
+  select.innerHTML = '<option value="">All</option>';
+
+  data.categories.forEach(cat => {
+    const option = document.createElement("option");
+
+    // ✅ THIS IS THE FIX
+    option.value = cat.name;
+    option.textContent = cat.name;
+
+    select.appendChild(option);
+  });
+
+  select.addEventListener("change", applyFilters);
+  document.getElementById("priceFilter").addEventListener("input", applyFilters);
+}
+
+function applyFilters() {
+  const category = document.getElementById("categoryFilter").value;
+  const price = document.getElementById("priceFilter").value;
+
+  document.getElementById("priceValue").textContent = price;
+
+  let filtered = data.products.filter(p => {
+    return (!category || p.category === category) &&
+           p.price_per_day <= price;
+  });
+
+  renderProducts(filtered);
+}
+
+function renderProducts(products) {
+  const grid = document.getElementById("productGrid");
+  grid.innerHTML = "";
+
+  products.forEach(p => {
+    grid.innerHTML += `
+      <div class="bg-white rounded-2xl shadow-sm overflow-hidden hover:shadow-md transition">
+
+        <img src="${p.image}" 
+          class="w-full h-40 object-cover cursor-pointer"
+          onclick="openImage('${p.image}')">
+
+        <div class="p-4">
+          <h3 class="font-semibold text-[#111827] text-sm">${p.name}</h3>
+
+          <p class="text-[#6b7280] text-xs mt-1">${p.dimensions}</p>
+
+          <p class="text-[#0ea5a4] font-semibold mt-2">
+            $${p.price_per_day}/day
+          </p>
+
+          <button onclick="addToCart('${p.id}')" 
+            class="mt-4 w-full bg-[#0ea5a4] text-white py-2 rounded-full">
+            Book Now
+          </button>
+        </div>
+
+      </div>
+    `;
+  });
+}
+
+function openImage(src) {
+  const modal = document.getElementById("imageModal");
+  const img = document.getElementById("modalImg");
+
+  img.src = src;
+  modal.classList.remove("hidden");
+  modal.classList.add("flex");
+}
+
+document.getElementById("imageModal").addEventListener("click", () => {
+  const modal = document.getElementById("imageModal");
+  modal.classList.add("hidden");
+  modal.classList.remove("flex");
+});
+
+function addToCart(id) {
+  const product = data.products.find(p => p.id === id);
+  cart.push(product);
+
+  localStorage.setItem("cart", JSON.stringify(cart));
+
+  const popup = document.getElementById("cartPopup");
+  popup.classList.remove("hidden");
+
+  setTimeout(() => popup.classList.add("hidden"), 2000);
+}
+</script>
+<script>
+  // --- Cart Count Logic ---
+  function updateGlobalCartCount() {
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const count = cart.reduce((total, item) => total + (item.quantity || 1), 0);
+    
+    const desktopCount = document.getElementById('cartCount');
+    const mobileCount = document.getElementById('cartCountMobile');
+    
+    if (desktopCount) desktopCount.textContent = count;
+    if (mobileCount) mobileCount.textContent = count;
+  }
+
+  // --- Mobile Menu Logic ---
+  const openBtn = document.getElementById('openMenu');
+  const closeBtn = document.getElementById('closeMenu');
+  const panel = document.getElementById('menuPanel');
+  const overlay = document.getElementById('menuOverlay');
+
+  if (openBtn && closeBtn) {
+    openBtn.onclick = () => { 
+      panel.classList.remove('translate-x-full'); 
+      overlay.classList.remove('hidden'); 
+    };
+    closeBtn.onclick = () => { 
+      panel.classList.add('translate-x-full'); 
+      overlay.classList.add('hidden'); 
+    };
+    overlay.onclick = closeBtn.onclick;
+  }
+
+  // Initialize on load
+  window.addEventListener('DOMContentLoaded', updateGlobalCartCount);
+</script>
+</body>
+</html>

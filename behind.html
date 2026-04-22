@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Behind the Scenes - SplashJump and Splash Inflatable Party Rentals Warehouse</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .heading { font-family: 'Playfair Display', serif; }
+    .video-container video { width: 100%; border-radius: 1rem; }
+  </style>
+</head>
+<body class="bg-[#f8fafc]">
+
+  <div class="bg-white shadow-sm sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto flex items-center justify-between px-5 py-4">
+      <div class="flex items-center gap-3 cursor-pointer" onclick="window.location.href='index.html'">
+        <img src="logo.jpeg" alt="Logo" class="w-10 h-10 object-contain rounded-lg">
+        <h1 class="text-lg font-bold tracking-tight text-gray-900">Jump and Splash Inflatable Party Rentals</h1>
+      </div>
+
+      <nav class="hidden md:flex gap-8 font-medium items-center text-gray-700">
+        <a href="index.html" class="hover:text-blue-600 transition">Home</a>
+        <a href="store.html" class="hover:text-blue-600 transition">Store</a>
+        <a href="warehouse.html" class="text-blue-600">Warehouse</a>
+        <a href="cart.html" class="flex items-center gap-2 bg-blue-50 px-4 py-2 rounded-full text-blue-600 hover:bg-blue-100 transition">
+          <span>🛒</span>
+          <span id="cartCount" class="font-bold">0</span>
+        </a>
+      </nav>
+
+      <button id="openMenu" class="md:hidden text-2xl p-2 text-gray-700">☰</button>
+    </div>
+  </div>
+
+  <div id="menuOverlay" class="fixed inset-0 bg-black/40 backdrop-blur-sm hidden z-40"></div>
+  <div id="menuPanel" class="fixed top-0 right-0 h-full w-full bg-white transform translate-x-full transition-transform duration-300 z-50">
+    <div class="flex items-center justify-between px-5 py-4 border-b">
+      <div class="flex items-center gap-3">
+        <img src="logo.png" alt="Logo" class="w-8 h-8 object-contain">
+        <span class="font-bold">SplashJump and Splash Inflatable Party Rentals</span>
+      </div>
+      <button id="closeMenu" class="text-2xl p-2 text-gray-500">✕</button>
+    </div>
+    <div class="flex flex-col px-6 py-8 gap-6 text-lg font-medium text-gray-800">
+      <a href="index.html">Home</a>
+      <a href="store.html">Store</a>
+      <a href="warehouse.html" class="text-blue-600">Warehouse</a>
+      <hr>
+      <a href="cart.html" class="flex justify-between items-center bg-blue-50 p-4 rounded-2xl text-blue-600">
+        <span class="flex items-center gap-2">🛒 My Cart</span>
+        <span id="cartCountMobile" class="bg-blue-600 text-white text-sm px-3 py-1 rounded-full">0</span>
+      </a>
+    </div>
+  </div>
+
+  <header class="bg-white py-16 px-5 border-b border-gray-100">
+    <div class="max-w-4xl mx-auto text-center">
+      <h1 class="heading text-4xl md:text-5xl text-gray-900 mb-4">Behind the Scenes</h1>
+      <p class="text-gray-500 text-lg">See how we clean, prep, and store our premium rentals to ensure your safety and fun.</p>
+    </div>
+  </header>
+
+  <section class="max-w-6xl mx-auto px-5 py-12">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      
+      <div class="bg-white p-4 rounded-2xl shadow-sm border border-gray-100">
+        <div class="video-container mb-4">
+          <video controls poster="images/behind.jpeg">
+            <source src="videos/vid1.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+        <h3 class="font-bold text-gray-800">Preparing to head Out</h3>
+        <p class="text-sm text-gray-500 mt-1">Let's get it started.</p>
+      </div>
+
+      <div class="bg-white p-4 rounded-2xl shadow-sm border border-gray-100">
+        <div class="video-container mb-4">
+          <video controls>
+            <source src="videos/vid2.mp4" type="video/mp4">
+          </video>
+        </div>
+        <h3 class="font-bold text-gray-800">Let it Rain</h3>
+        <p class="text-sm text-gray-500 mt-1">Making sure everything is good.</p>
+      </div>
+
+      <div class="bg-white p-4 rounded-2xl shadow-sm border border-gray-100">
+        <div class="video-container mb-4">
+          <video controls>
+            <source src="videos/vid3.mp4" type="video/mp4">
+          </video>
+        </div>
+        <h3 class="font-bold text-gray-800">Toro</h3>
+        <p class="text-sm text-gray-500 mt-1">The crazy bull setup.</p>
+      </div>
+
+      <div class="bg-white p-4 rounded-2xl shadow-sm border border-gray-100">
+        <div class="video-container mb-4">
+          <video controls>
+            <source src="videos/vid4.mp4" type="video/mp4">
+          </video>
+        </div>
+        <h3 class="font-bold text-gray-800">Professional Packing</h3>
+        <p class="text-sm text-gray-500 mt-1">How we roll and store our giant slides.</p>
+      </div>
+
+      <div class="bg-white p-4 rounded-2xl shadow-sm border border-gray-100">
+        <div class="video-container mb-4">
+          <video controls>
+            <source src="videos/vid5.mp4" type="video/mp4">
+          </video>
+        </div>
+        <h3 class="font-bold text-gray-800">Morning Dispatch</h3>
+        <p class="text-sm text-gray-500 mt-1">Our teams loading up for a busy Saturday.</p>
+      </div>
+
+      <div class="bg-white p-4 rounded-2xl shadow-sm border border-gray-100">
+        <div class="video-container mb-4">
+          <video controls>
+            <source src="videos/vid6.mp4" type="video/mp4">
+          </video>
+        </div>
+        <h3 class="font-bold text-gray-800">New Inventory Unboxing</h3>
+        <p class="text-sm text-gray-500 mt-1">Testing out our newest 2026 models.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="bg-gray-900 text-gray-400 py-12 px-5 mt-12">
+    <div class="max-w-6xl mx-auto text-center">
+      <p class="text-white font-bold mb-4">SplashJump and Splash Inflatable Party Rentals Warehouse</p>
+      <div style="display:flex; gap:15px; align-items:center;">
+
+  <!-- Call -->
+  <a href="tel:+17135197010">
+    <img src="https://cdn-icons-png.flaticon.com/512/724/724664.png" width="40">
+  </a>
+
+  <!-- Email -->
+  <a href="mailto:rentwithinflatableparties@gmail.com">
+    <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" width="40">
+  </a>
+
+  <!-- Facebook -->
+  <a href="https://www.facebook.com/share/182pUjwdAv/?mibextid=wwXIfr" target="_blank">
+    <img src="https://cdn-icons-png.flaticon.com/512/124/124010.png" width="40">
+  </a>
+
+</div>
+      <p class="text-xs">© 2026 SplashJump and Splash Inflatable Party Rentals. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile Menu Logic
+    const openBtn = document.getElementById('openMenu');
+    const closeBtn = document.getElementById('closeMenu');
+    const panel = document.getElementById('menuPanel');
+    const overlay = document.getElementById('menuOverlay');
+
+    function toggleMenu(isOpen) {
+      panel.classList.toggle('translate-x-full', !isOpen);
+      overlay.classList.toggle('hidden', !isOpen);
+    }
+
+    openBtn.onclick = () => toggleMenu(true);
+    closeBtn.onclick = () => toggleMenu(false);
+    overlay.onclick = () => toggleMenu(false);
+
+    // Sync Cart Count from LocalStorage
+    function updateCartBadge() {
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      const totalQty = cart.reduce((acc, item) => acc + (item.quantity || 1), 0);
+      
+      const desktopBadge = document.getElementById('cartCount');
+      if (desktopBadge) desktopBadge.textContent = totalQty;
+      
+      const mobileBadge = document.getElementById('cartCountMobile');
+      if (mobileBadge) mobileBadge.textContent = totalQty;
+    }
+
+    window.addEventListener('DOMContentLoaded', updateCartBadge);
+  </script>
+</body>
+</html>

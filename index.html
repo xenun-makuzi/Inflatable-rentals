@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Jump and Splash Inflatable Rentals | Premium Party Rentals</title>
+
+  <link rel="icon" type="image/JPEG" href="logo.jpeg">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+  <style>
+    body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+    .heading { font-family: 'Playfair Display', serif; }
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    
+    /* FAQ Accordion Styles */
+    .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; }
+    .faq-item.active .faq-answer { max-height: 200px; padding-top: 1rem; }
+    .faq-item.active .faq-icon { transform: rotate(180deg); }
+  </style>
+</head>
+
+<body class="bg-gray-50 text-gray-900">
+
+  <div class="bg-white shadow-sm sticky top-0 z-50">
+  <div class="max-w-6xl mx-auto flex items-center justify-between px-5 py-4">
+    <div class="flex items-center gap-3 cursor-pointer" onclick="window.location.href='index.html'">
+      <img src="logo.JPEG" alt="Jump and Splash Inflatable Rentals Logo" class="w-10 h-10 object-contain rounded-lg">
+      <h1 class="text-lg font-bold tracking-tight">Jump and Splash Inflatable Rentals</h1>
+    </div>
+
+    <nav class="hidden md:flex gap-8 font-medium items-center text-gray-700">
+      <a href="index.html" class="text-blue-600">Home</a>
+      <a href="store.html" class="hover:text-blue-500 transition">Store</a>
+      <a href="#about" class="hover:text-blue-500 transition">About</a>
+      <a href="#faq" class="hover:text-blue-500 transition">FAQ</a>
+      
+      <a href="mailto:rentwithinflatableparties@gmail.com" class="hover:text-blue-500 transition">Contact</a>
+
+      <a href="cart.html" class="flex items-center gap-2 bg-blue-50 px-4 py-2 rounded-full text-blue-600 hover:bg-blue-100 transition">
+        <span>🛒</span>
+        <span id="cartCount" class="font-bold">0</span>
+      </a>
+    </nav>
+
+    <button id="openMenu" class="md:hidden text-2xl">☰</button>
+  </div>
+</div>
+
+  <div id="menuOverlay" class="fixed inset-0 bg-black/40 backdrop-blur-sm hidden z-40"></div>
+  <div id="menuPanel" class="fixed top-0 right-0 h-full w-full bg-white transform translate-x-full transition-transform duration-300 z-50">
+    <div class="flex items-center justify-between px-5 py-4 border-b">
+      <h2 class="text-lg font-semibold">Menu</h2>
+      <button id="closeMenu" class="text-2xl">✕</button>
+    </div>
+    <div class="flex flex-col px-6 py-8 gap-6 text-lg font-medium">
+      <a href="index.html">Home</a>
+      <a href="store.html">Store</a>
+      <a href="#about">About</a>
+      <a href="#faq">FAQ</a>
+      <hr>
+      <a href="cart.html" class="text-blue-600 font-bold flex justify-between">
+        View Cart <span>(<span id="cartCountMobile">0</span>)</span>
+      </a>
+    </div>
+  </div>
+
+  <section class="relative h-[75vh] flex items-center overflow-hidden">
+    <div class="absolute inset-0 z-0">
+      <img src="back.jpeg" class="w-full h-full object-cover brightness-50" alt="Hero">
+    </div>
+    <div class="relative z-10 px-5 max-w-6xl mx-auto w-full text-white">
+      <span class="inline-block px-4 py-1 bg-blue-600/80 backdrop-blur-md rounded-full text-sm font-semibold mb-6">#1 Rated Party Rentals</span>
+      <h1 class="heading text-5xl md:text-7xl leading-tight mb-6">Premium Fun,<br>Delivered Daily.</h1>
+      <p class="text-lg md:text-xl mb-8 max-w-xl opacity-90">Clean, safe, and professional setup for the best bounce houses and water slides in the city.</p>
+      <div class="flex flex-wrap gap-4">
+        <a href="store.html" class="bg-blue-600 text-white px-10 py-4 rounded-full font-bold shadow-lg hover:bg-blue-700 transition">Browse Store</a>
+        <a href="#about" class="bg-white/10 backdrop-blur-md border border-white/30 px-10 py-4 rounded-full font-bold hover:bg-white/20 transition">Our Story</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="px-5 py-20 max-w-6xl mx-auto">
+    <div class="text-center mb-12">
+      <h2 class="heading text-3xl md:text-4xl mb-4 text-gray-900">Choose Your Fun</h2>
+      <p class="text-gray-500">Click a category to see available rentals</p>
+    </div>
+    <div id="categoryGrid" class="grid grid-cols-2 md:grid-cols-4 gap-6">
+      </div>
+  </section>
+
+  <section id="about" class="px-5 py-20 bg-white border-y border-gray-100">
+    <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+      <div class="relative">
+        <img src="logo.jpeg" alt="About Us">
+        <div class="absolute -bottom-6 -right-6 bg-blue-600 text-white p-6 rounded-2xl hidden md:block">
+          <p class="text-2xl font-bold">10+ Years</p>
+          <p class="text-sm opacity-80">of making memories</p>
+        </div>
+      </div>
+      <div>
+        <h2 class="heading text-4xl mb-6 text-gray-900">Safe, Clean, & Reliable.</h2>
+        <p class="text-gray-600 mb-6 leading-relaxed text-lg">Jump and Splash Inflatable Rentals is a family-owned business dedicated to bringing the "Wow" factor to your events. We handle the heavy lifting—delivery, setup, and teardown—so you can enjoy the moment.</p>
+        <ul class="space-y-4 mb-8">
+          <li class="flex items-center gap-3 font-medium"><span class="text-green-500 text-xl">✔</span> Fully Insured & Safety Certified</li>
+          <li class="flex items-center gap-3 font-medium"><span class="text-green-500 text-xl">✔</span> Sanitized After Every Rental</li>
+          <li class="flex items-center gap-3 font-medium"><span class="text-green-500 text-xl">✔</span> On-Time Delivery Guarantee</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="px-5 py-20 bg-gray-50">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="heading text-3xl md:text-4xl mb-12 text-center text-gray-900">Popular This Week</h2>
+      <div id="trendingGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        </div>
+    </div>
+  </section>
+
+  <section class="px-5 py-20 bg-blue-600 text-white">
+    <div class="max-w-6xl mx-auto text-center">
+      <h2 class="heading text-3xl md:text-4xl mb-16">What Our Customers Say</h2>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-white/10 backdrop-blur-md p-8 rounded-3xl border border-white/20 text-left">
+          <p class="text-yellow-400 text-xl mb-4">★★★★★</p>
+          <p class="text-lg italic mb-6">"The Mega Dome was the hit of the party! It was so clean and the team was so helpful."</p>
+          <p class="font-bold">— Sarah Johnson</p>
+        </div>
+        <div class="bg-white/10 backdrop-blur-md p-8 rounded-3xl border border-white/20 text-left">
+          <p class="text-yellow-400 text-xl mb-4">★★★★★</p>
+          <p class="text-lg italic mb-6">"Easiest booking process ever. They arrived early and had everything ready in minutes."</p>
+          <p class="font-bold">— Mike Rivera</p>
+        </div>
+        <div class="bg-white/10 backdrop-blur-md p-8 rounded-3xl border border-white/20 text-left">
+          <p class="text-yellow-400 text-xl mb-4">★★★★★</p>
+          <p class="text-lg italic mb-6">"Highly recommend for corporate events. Professional equipment and great communication."</p>
+          <p class="font-bold">— Linda Chen</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq" class="px-5 py-20 max-w-3xl mx-auto">
+    <h2 class="heading text-3xl text-center mb-12 text-gray-900">Frequently Asked Questions</h2>
+    <div class="space-y-4">
+      <div class="faq-item bg-white border border-gray-200 rounded-2xl overflow-hidden cursor-pointer p-6 transition hover:shadow-md">
+        <div class="flex justify-between items-center font-bold text-gray-800">
+          <span>What happens if it rains on the day of my event?</span>
+          <span class="faq-icon transition text-blue-600">▼</span>
+        </div>
+        <div class="faq-answer text-gray-600">
+          We monitor the weather closely. If rain is forecasted, you can reschedule your event for free or receive a full refund if cancelled 24 hours in advance.
+        </div>
+      </div>
+      <div class="faq-item bg-white border border-gray-200 rounded-2xl overflow-hidden cursor-pointer p-6 transition hover:shadow-md">
+        <div class="flex justify-between items-center font-bold text-gray-800">
+          <span>How far in advance should I book?</span>
+          <span class="faq-icon transition text-blue-600">▼</span>
+        </div>
+        <div class="faq-answer text-gray-600">
+          We recommend booking 2-4 weeks in advance for weekends. However, we often have last-minute availability, so check our store!
+        </div>
+      </div>
+      <div class="faq-item bg-white border border-gray-200 rounded-2xl overflow-hidden cursor-pointer p-6 transition hover:shadow-md">
+        <div class="flex justify-between items-center font-bold text-gray-800">
+          <span>Is delivery and setup included?</span>
+          <span class="faq-icon transition text-blue-600">▼</span>
+        </div>
+        <div class="faq-answer text-gray-600">
+          Yes! Delivery and professional setup are included for all locations within our standard service area.
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="px-5 py-16 bg-gray-900 text-white">
+  <div class="max-w-6xl mx-auto rounded-3xl overflow-hidden relative group cursor-pointer" onclick="window.location.href='behind.html'">
+    <div class="absolute inset-0 z-0">
+      <img src="images/behind.jpeg" class="w-full h-full object-cover opacity-40 group-hover:scale-105 transition duration-700" alt="Warehouse">
+      <div class="absolute inset-0 bg-gradient-to-r from-blue-900/80 to-transparent"></div>
+    </div>
+
+    <div class="relative z-10 px-8 py-16 md:px-16 md:py-24 max-w-2xl">
+      <h2 class="heading text-4xl md:text-5xl mb-6">Our Magazine:<br>See Us In Action</h2>
+      <p class="text-lg text-gray-300 mb-8 leading-relaxed">
+        Curious about how we keep the fun safe? Take a virtual tour of our warehouse, 
+        watch our cleaning process, and see our behind-the-scenes magic.
+      </p>
+      <div class="inline-flex items-center gap-3 bg-white text-blue-600 px-8 py-4 rounded-full font-bold hover:bg-blue-50 transition shadow-xl">
+        Watch Now <span>🎬</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <footer class="bg-gray-900 text-gray-400 py-16 px-5">
+    <div class="max-w-6xl mx-auto grid md:grid-cols-4 gap-12 mb-12">
+      <div class="col-span-1 md:col-span-2">
+        <h2 class="text-white font-bold text-2xl mb-4">Jump and Splash Inflatable Rentals</h2>
+        <p class="max-w-sm mb-6">Making celebrations unforgettable since 2016. We deliver the fun, you make the memories.</p>
+      </div>
+      <div>
+        <h4 class="text-white font-bold mb-6">Explore</h4>
+        <ul class="space-y-3 text-sm">
+          <li><a href="store.html" class="hover:text-white transition">Store</a></li>
+          <li><a href="#about" class="hover:text-white transition">About Us</a></li>
+          <li><a href="#faq" class="hover:text-white transition">FAQ</a></li>
+        </ul>
+      </div>
+      <div style="display:flex; gap:15px; align-items:center;">
+
+  <!-- Call -->
+  <a href="tel:+17135197010">
+    <img src="https://cdn-icons-png.flaticon.com/512/724/724664.png" width="40">
+  </a>
+
+  <!-- Email -->
+  <a href="mailto:rentwithinflatableparties@gmail.com">
+    <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" width="40">
+  </a>
+
+  <!-- Facebook -->
+  <a href="https://www.facebook.com/share/182pUjwdAv/?mibextid=wwXIfr" target="_blank">
+    <img src="https://cdn-icons-png.flaticon.com/512/124/124010.png" width="40">
+  </a>
+
+</div>
+    </div>
+    <div class="text-center text-xs border-t border-gray-800 pt-8">
+      © 2026 Jump and Splash Inflatable Rentals Party Rentals. All rights reserved.
+    </div>
+  </footer>
+
+  <script>
+    const icons = {
+      castle: '🏰', water: '🌊', banner: '🚩', maze: '🧩', popcorn: '🍿', games: '🎮', slip :'💦',pool: '🏊',
+      tent: '⛺', table: '🪑', chair: '🛋️', bull: '🐂'
+    };
+
+    async function init() {
+      try {
+        const response = await fetch('categories.json');
+        const data = await response.json();
+        
+        // 1. Render Categories
+        const catGrid = document.getElementById('categoryGrid');
+        catGrid.innerHTML = data.categories.map(cat => `
+          <div onclick="goToCategory('${cat.name}')" class="bg-white p-8 rounded-3xl shadow-sm border border-gray-100 hover:border-blue-500 hover:shadow-lg transition cursor-pointer text-center group">
+            <div class="text-4xl mb-4 group-hover:scale-110 transition duration-300">${icons[cat.icon] || '📦'}</div>
+            <p class="font-bold text-gray-800">${cat.name}</p>
+          </div>
+        `).join('');
+
+        // 2. Render Trending (Using real product data from JSON for cart compatibility)
+        const trendingGrid = document.getElementById('trendingGrid');
+        // Let's pick 3 specific products (e.g., bh1, ws1, cb1)
+        const trendingIds = ['cb19', 'ws6', 'ps1'];
+        const trendingItems = data.products.filter(p => trendingIds.includes(p.id));
+        
+        trendingGrid.innerHTML = trendingItems.map(item => `
+          <div class="bg-white rounded-3xl shadow-sm border border-gray-100 overflow-hidden group">
+            <div class="h-60 overflow-hidden">
+              <img src="${item.image}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+            </div>
+            <div class="p-6">
+              <div class="flex justify-between items-center mb-4">
+                <h3 class="font-bold text-xl text-gray-900">${item.name}</h3>
+                <span class="text-blue-600 font-bold text-lg">$${item.price_per_day}</span>
+              </div>
+              <p class="text-gray-500 text-sm mb-6">${item.dimensions}</p>
+              <button onclick="addToCart('${item.id}', '${item.name}', ${item.price_per_day}, '${item.image}')" 
+                class="w-full bg-blue-600 text-white py-4 rounded-2xl font-bold hover:bg-blue-700 active:scale-95 transition">
+                Add to Cart
+              </button>
+            </div>
+          </div>
+        `).join('');
+      } catch (e) { console.error("Error loading data", e); }
+      
+      updateCartUI();
+    }
+
+    function goToCategory(name) {
+      window.location.href = `store.html?category=${encodeURIComponent(name)}`;
+    }
+
+    // CART LOGIC (Synced with store.html)
+    function addToCart(id, name, price, image) {
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      const existing = cart.find(i => i.id === id);
+      if (existing) {
+        existing.quantity += 1;
+      } else {
+        // Matching the cart object structure from store.html
+        cart.push({ id, name, price_per_day: price, image: image, quantity: 1 });
+      }
+      localStorage.setItem('cart', JSON.stringify(cart));
+      updateCartUI();
+      alert(`${name} added to cart!`);
+    }
+
+    function updateCartUI() {
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      const count = cart.reduce((t, i) => t + i.quantity, 0);
+      document.getElementById('cartCount').textContent = count;
+      document.getElementById('cartCountMobile').textContent = count;
+    }
+
+    // FAQ Toggle Logic
+    document.querySelectorAll('.faq-item').forEach(item => {
+      item.addEventListener('click', () => {
+        item.classList.toggle('active');
+      });
+    });
+
+    // Mobile Menu
+    const openBtn = document.getElementById('openMenu');
+    const closeBtn = document.getElementById('closeMenu');
+    const panel = document.getElementById('menuPanel');
+    const overlay = document.getElementById('menuOverlay');
+
+    openBtn.onclick = () => { panel.classList.remove('translate-x-full'); overlay.classList.remove('hidden'); };
+    closeBtn.onclick = () => { panel.classList.add('translate-x-full'); overlay.classList.add('hidden'); };
+    overlay.onclick = closeBtn.onclick;
+
+    init();
+  </script>
+  <!--Start of Tawk.to Script-->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/6961a8aaddaeb2197dbdb29f/default';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+<!--End of Tawk.to Script-->
+</body>
+</html>
